@@ -43,6 +43,8 @@ runs:
         path: ${{ env.pythonLocation }}
         key: ${{ env.pythonLocation }}-${{ hashFiles('setup.py') }}-${{ hashFiles('requirements.txt') }}
     #запуск скрипта
+    - run: pip install -r requirements.txt
+      shell: bash
     - name: Run a Python script
       run: python ./.github/workflows/test.py
       shell: bash

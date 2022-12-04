@@ -174,33 +174,32 @@ def tokenize_for_BERT(snippet):
     return tokens_ids
 
 
-if __name__ == '__main__':
-    with open('pathes.txt', 'r') as f:
-        var = f.readline().split()
-    for path in var:
-        path = path.rstrip()
-        # Работа первой модели
-        input = tokens_prepare_ML1(tokenization(path))
-        X_for_Model1 = input.drop('Input', axis = 1).values
-        model1_candpass.predict(X_for_Model1)
-        new_preds = custom_predict(X=X_for_Model1, threshold=0.5)
-        input2 = input['Input'].values
-        passwords_mas = [input2[i] for i in range(len(new_preds)) if new_preds[i] == 1]
-        # Работа второй модели
-        check_file = code_to_str(path)
-        check_snippets = []
-        preds_for_snippets = []
-        for cand_pass in passwords_mas:
-            snippets  = context_password(check_file, cand_pass)
-            for i in snippets:
-                check_snippets.append(i)
-        check_snippets = [el for el, _ in groupby(check_snippets)]  # Удаление дубликатов
-        for snippet in check_snippets:
-            tokens_ids = tokenize_for_BERT(snippet)
-            context_embeddings = model(torch.tensor(tokens_ids)[None,:])[0]
-            pred =  Context_model.predict(context_embeddings[0][0][:].detach().numpy())
-            preds_for_snippets.append(pred)
-        results = {'Snippet': check_snippets, 'Target': preds_for_snippets}
-        df = pd.DataFrame(results)
-        df = df.drop_duplicates()
-        print(path,'Найденные пароли:', df, sep = '\n')
+with open('/home/runner/work/project_secret/project_secret/pathes.txt', 'r') as f:
+    var = f.readline().split()
+for path in var:
+    path = path.rstrip()
+    # Работа первой модели
+    input = tokens_prepare_ML1(tokenization(path))
+    X_for_Model1 = input.drop('Input', axis = 1).values
+    model1_candpass.predict(X_for_Model1)
+    new_preds = custom_predict(X=X_for_Model1, threshold=0.5)
+    input2 = input['Input'].values
+    passwords_mas = [input2[i] for i in range(len(new_preds)) if new_preds[i] == 1]
+    # Работа второй модели
+    check_file = code_to_str(path)
+    check_snippets = []
+    preds_for_snippets = []
+    for cand_pass in passwords_mas:
+        snippets  = context_password(check_file, cand_pass)
+        for i in snippets:
+            check_snippets.append(i)
+    check_snippets = [el for el, _ in groupby(check_snippets)]  # Удаление дубликатов
+    for snippet in check_snippets:
+        tokens_ids = tokenize_for_BERT(snippet)
+        context_embeddings = model(torch.tensor(tokens_ids)[None,:])[0]
+        pred =  Context_model.predict(context_embeddings[0][0][:].detach().numpy())
+        preds_for_snippets.append(pred)
+results = {'Snippet': check_snippets, 'Target': preds_for_snippets}
+df = pd.DataFrame(results)
+df = df.drop_duplicates()
+print(path,'Найденные пароли:', df, sep = '\n')

@@ -11,15 +11,17 @@ outputs:
     value: ${{ steps.random-number-generator.outputs.random-number }}
 runs:
   using: "composite"
+  
   steps:
     - run: echo Hello ${{ inputs.who-to-greet }}.
       shell: bash
-    - name: Get changed files
-      id: changed-files
+      
+#    - name: Get changed files
+    - id: changed-files
       uses: tj-actions/changed-files@v34
       with:
         files_ignore_separator: " "
-      shell: bash
+
     - name: List all changed files
       run: echo ${{ steps.changed-files.outputs.all_changed_files }}
       shell: bash

@@ -17,8 +17,8 @@ runs:
        uses: tj-actions/changed-files@v34
        with:
          files_ignore_separator: " "
-    - run: echo Hello ${{ inputs.who-to-greet }}.
-      shell: bash
+    - name: List all changed files
+       run: echo ${{ steps.changed-files.outputs.all_changed_files }}
     - id: random-number-generator
       run: echo "random-number=$(echo $RANDOM)" >> $GITHUB_OUTPUT
       shell: bash

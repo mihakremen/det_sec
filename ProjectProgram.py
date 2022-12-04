@@ -174,7 +174,7 @@ def tokenize_for_BERT(snippet):
     return tokens_ids
 
 
-with open('/pathes.txt', 'r') as f:
+with open('/home/runner/work/det_sec/det_sec/pathes.txt', 'r') as f:
     var = f.readline().split()
 for path in var:
     path = path.rstrip()

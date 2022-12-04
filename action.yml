@@ -12,17 +12,25 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - name: Get changed files
-       id: changed-files
-       uses: tj-actions/changed-files@v34
-       with:
-         files_ignore_separator: " "
-    - name: List all changed files
-       run: echo ${{ steps.changed-files.outputs.all_changed_files }}
+    - run: echo Hello ${{ inputs.who-to-greet }}.
+      shell: bash
     - id: random-number-generator
       run: echo "random-number=$(echo $RANDOM)" >> $GITHUB_OUTPUT
       shell: bash
     - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
       shell: bash
- #   - run: goodbye.sh
- #     shell: bash
+      # Установка зависимостей pip
+    - name: Python Dependency Installation
+#        uses: py-actions/py-dependency-install@v4.0.0
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+#          cache: 'pip'
+     - name: restore_env_cache
+       uses: actions/cache@v3
+         with:
+            path: ${{ env.pythonLocation }}
+            key: ${{ env.pythonLocation }}-${{ hashFiles('setup.py') }}-${{ hashFiles('requirements.txt') }}
+    #запуск скрипта
+    - name: Run a Python script
+      run: python workflows/test.py

@@ -9,6 +9,6 @@ jobs:
       - id: foo
         uses: mihakremen/det_sec@v1
         with:
-          who-to-greet: 'Mona the Octocat'
+          who-to-greet: 'Antoshka'
       - run: echo random-number ${{ steps.foo.outputs.random-number }}
         shell: bash

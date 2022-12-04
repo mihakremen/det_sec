@@ -1,2 +1,2 @@
-# det_sek
+# det_sec
 detection secret tool by our team

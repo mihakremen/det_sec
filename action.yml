@@ -34,19 +34,19 @@ runs:
     - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
       shell: bash
       # Установка зависимостей pip
-#    - name: Python Dependency Installation
- #     uses: actions/setup-python@v4
- #     with:
- #       python-version: '3.9'
+    - name: Python Dependency Installation
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
 
-#    - name: restore_env_cache
- #     uses: actions/cache@v3
- #     with:
- #       path: ${{ env.pythonLocation }}
- #       key: ${{ env.pythonLocation }}-${{ hashFiles('setup.py') }}-${{ hashFiles('requirements.txt') }}
+    - name: restore_env_cache
+      uses: actions/cache@v3
+      with:
+        path: ${{ env.pythonLocation }}
+        key: ${{ env.pythonLocation }}-${{ hashFiles('setup.py') }}-${{ hashFiles('requirements.txt') }}
     #запуск скрипта
-#    - run: pip install -r requirements.txt
-#      shell: bash
-#    - name: Run a Python script
-#      run: python ProjectProgram.py
-#      shell: bash
+    - run: pip install -r requirements.txt
+      shell: bash
+    - name: Run a Python script
+      run: python ProjectProgram.py
+      shell: bash

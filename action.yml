@@ -25,9 +25,6 @@ runs:
     - name: List all changed files
       run: echo ${{ steps.changed-files.outputs.all_changed_files }}
       shell: bash
-    - name: Write File
-      run: echo ${{ steps.changed-files.outputs.all_changed_files }} > pathes.txt && less ./pathes.txt \\
-         && find -name "pathes.txt" && ls && realpath pathes.txt
     - id: random-number-generator
       run: echo "random-number=$(echo $RANDOM)" >> $GITHUB_OUTPUT
       shell: bash

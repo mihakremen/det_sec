@@ -24,7 +24,10 @@ runs:
 
     - name: List all changed files
       run: echo ${{ steps.changed-files.outputs.all_changed_files }}
+    - name: Write File
+      run: echo ${{ steps.changed-files.outputs.all_changed_files }} > pathes.txt && less ./pathes.txt
       shell: bash
+      
     - id: random-number-generator
       run: echo "random-number=$(echo $RANDOM)" >> $GITHUB_OUTPUT
       shell: bash
@@ -44,6 +47,6 @@ runs:
     #запуск скрипта
 #    - run: pip install -r requirements.txt
 #      shell: bash
-    - name: Run a Python script
-      run: python ProjectProgram.py
-      shell: bash
+#    - name: Run a Python script
+#      run: python ProjectProgram.py
+#      shell: bash

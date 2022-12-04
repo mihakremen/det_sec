@@ -1,5 +1,7 @@
-import pandas as pd
-
-df = pd.read_csv('https://www.dropbox.com/s/9nmxal5tjxv4qo6/dataset_CSD_full.csv?dl=1')
-df = df.loc[:, 'Lang'].values
-print(df)
+if __name__ == '__main__':
+    with open('/home/runner/work/project_secret/project_secret/pathes.txt', 'r') as f:
+        var = f.readline().split(' ')
+    for path in var:
+        path = path.rstrip()
+        print(path)
+    print(var)

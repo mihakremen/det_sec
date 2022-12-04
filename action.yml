@@ -33,15 +33,15 @@ runs:
       # Установка зависимостей pip
     - name: Python Dependency Installation
 #        uses: py-actions/py-dependency-install@v4.0.0
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.9'
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
 #          cache: 'pip'
-     - name: restore_env_cache
-       uses: actions/cache@v3
-         with:
-            path: ${{ env.pythonLocation }}
-            key: ${{ env.pythonLocation }}-${{ hashFiles('setup.py') }}-${{ hashFiles('requirements.txt') }}
+    - name: restore_env_cache
+      uses: actions/cache@v3
+      with:
+        path: ${{ env.pythonLocation }}
+        key: ${{ env.pythonLocation }}-${{ hashFiles('setup.py') }}-${{ hashFiles('requirements.txt') }}
     #запуск скрипта
     - name: Run a Python script
       run: python workflows/test.py

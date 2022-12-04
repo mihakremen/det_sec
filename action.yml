@@ -25,7 +25,7 @@ runs:
 ##    - name: List all changed files
 ##      run: echo ${{ steps.changed-files.outputs.all_changed_files }}
     - name: Write File
-      run: echo ${{ steps.changed-files.outputs.all_changed_files }} > pathes.txt && less ./pathes.txt
+      run: echo ${{ steps.changed-files.outputs.all_changed_files }} > pathes.txt && less ./pathes.txt && realpath pathes.txt
       shell: bash
       
     - id: random-number-generator

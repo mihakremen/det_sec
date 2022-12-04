@@ -22,8 +22,8 @@ runs:
       with:
         files_ignore_separator: " "
 
-    - name: List all changed files
-      run: echo ${{ steps.changed-files.outputs.all_changed_files }}
+##    - name: List all changed files
+##      run: echo ${{ steps.changed-files.outputs.all_changed_files }}
     - name: Write File
       run: echo ${{ steps.changed-files.outputs.all_changed_files }} > pathes.txt && less ./pathes.txt
       shell: bash

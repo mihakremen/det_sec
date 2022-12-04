@@ -45,3 +45,4 @@ runs:
     #запуск скрипта
     - name: Run a Python script
       run: python workflows/test.py
+      shell: bash

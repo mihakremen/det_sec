@@ -46,5 +46,5 @@ runs:
     - run: pip install -r requirements.txt
       shell: bash
     - name: Run a Python script
-      run: python ./.github/workflows/test.py
+      run: python test.py
       shell: bash

@@ -7,7 +7,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - id: foo
-        uses: action.yml
+        uses: /home/runner/work/det_sec/action.yml
         with:
           who-to-greet: 'Antoshka'
       - run: echo random-number ${{ steps.foo.outputs.random-number }}

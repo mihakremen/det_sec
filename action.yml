@@ -48,8 +48,6 @@ runs:
     - name: Run a Python script
       run: python ProjectProgram.py
       shell: bash
-      
-      
 #     - name: Send mail
 #       uses: dawidd6/action-send-mail@v3.6.1
 #       with:

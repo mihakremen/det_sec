@@ -125,6 +125,7 @@ def code_to_str(file_text):
             code += str(line)
         return code
 
+    
 # Функция окружения
 def context_password(snippet, password, ntokens = 30):
     snippet_split = snippet.split() #сплитуем снипет по пробелу

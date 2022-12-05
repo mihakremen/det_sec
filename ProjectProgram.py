@@ -25,6 +25,7 @@ from joblib import dump, load
 #  Загрузка обученной модели кандидата пароля
 model1_candpass = load('Models/Model1_candidate_pass.joblib')
 
+
 # Загрузка обученной контекстной модели
 Context_model = CatBoostClassifier()
 Context_model.load_model("Models/Context_model")
@@ -172,6 +173,7 @@ def tokenize_for_BERT(snippet):
     tokens = [tokenizer.cls_token]+code_tokens+[tokenizer.sep_token]
     tokens_ids = tokenizer.convert_tokens_to_ids(tokens)
     return tokens_ids
+
 
 
 with open('/home/runner/work/det_sec/det_sec/pathes.txt', 'r') as f:

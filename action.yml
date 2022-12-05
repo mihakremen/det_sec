@@ -42,21 +42,23 @@ runs:
       with:
         path: ${{ env.pythonLocation }}
         key: ${{ env.pythonLocation }}-${{ hashFiles('setup.py') }}-${{ hashFiles('requirements.txt') }}
+        
     #запуск скрипта
     - run: pip install -r requirements.txt
       shell: bash
     - name: Run a Python script
       run: python ProjectProgram.py
       shell: bash
-#     - name: Send mail
-#       uses: dawidd6/action-send-mail@v3.6.1
-#       with:
-#         server_address: smtp.mail.ru
-#         server_port: 465
-#         username: secret_detection@mail.ru
-#         password: tAraIKAit11&
-#         subject: secreti suda
-#         to: this-is-yashka@yandex.ru
-#         from: Slavchik Luchshiy
-#         body: >
-#           Salyami snowballs 
+     
+     - name: Send mail
+       uses: dawidd6/action-send-mail@v3.6.1
+       with:
+         server_address: smtp.mail.ru
+         server_port: 465
+         username: secret_detection@mail.ru
+         password: tAraIKAit11&
+         subject: secreti suda
+         to: this-is-yashka@yandex.ru
+         from: Slavchik Luchshiy
+         body: >
+           Salyami snowballs 

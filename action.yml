@@ -24,7 +24,8 @@ runs:
     
     - name: List all changed files
       run: echo ${{ steps.changed-files.outputs.all_changed_files }}
-    
+      shell: bash
+      
     - name: Write File
       run: echo ${{ steps.changed-files.outputs.all_changed_files }} > pathes.txt && less ./pathes.txt && realpath pathes.txt
       shell: bash

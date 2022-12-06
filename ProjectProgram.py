@@ -205,7 +205,7 @@ for path in var:
 results = {'Snippet': check_snippets, 'Target': preds_for_snippets}
 df = pd.DataFrame(results)
 df = df.drop_duplicates()
-res_preds = df.loc[:, 'preds_for_snippets'].values
+res_preds = df.loc[:, 'Target'].values
 with open ('Program_predictions.txt', 'w') as f:
     for i in res_preds:
         f.write(str(i) + ' ')

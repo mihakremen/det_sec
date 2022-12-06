@@ -5,3 +5,4 @@ if __name__ == '__main__':
         path = path.rstrip()
         print(path)
     print(var)
+ password: lovalova134

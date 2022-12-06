@@ -56,9 +56,15 @@ runs:
       run: python ProjectProgram.py
       shell: bash
       
+    - id: secret_bool
+      run: |
+        SECRET_BOOL=$( grep '1' Program_predictions.txt ) &&
+        echo "::set-output name=SECRET_BOOL::$SECRET_BOOL"
+      shell: bash      
+      
      #если есть секреты, вываливаемся в ошибку
     - name: Send mail
-      if: $( grep '1' Program_predictions.txt )
+      if: steps.secret_bool.outputs.SECRET_BOOL != 0
       uses: dawidd6/action-send-mail@v3.6.1
       with:
         server_address: smtp.mail.ru
@@ -66,7 +72,7 @@ runs:
         username: det_sec tool of ${{ github.repository }} repository
         password: ${{ inputs.logmail_password }}
         subject: ${{ github.job }} job
-        to: ${{ inputs.logmail_address }}}}
+        to: ${{ inputs.logmail_address }}
         from: github angular workflow
         body: >
            A person with nick "$GITHUB_ACTOR" in repository ${{ github.workflow }} 
@@ -77,7 +83,7 @@ runs:
       
       
     - name: if there any secrets
-      run: if grep '1' Program_predictions.txt; then exit 1; fi
+      run:  if grep '1' Program_predictions.txt; then exit 1; fi
       shell: bash     
      
      

@@ -58,8 +58,10 @@ runs:
       
     - id: secret_bool
       run: |
-        SECRET_BOOL=$( grep '1' Program_predictions.txt ) &&
-        echo "::set-output name=SECRET_BOOL::$SECRET_BOOL"
+        if grep '1' Program_predictions.txt; \\
+        then SECRET_BOOL="1" && \\
+        echo "::set-output name=SECRET_BOOL::$SECRET_BOOL"; fi
+        
       shell: bash      
       
      #если есть секреты, вываливаемся в ошибку

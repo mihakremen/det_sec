@@ -3,8 +3,16 @@ description: 'Greet someone'
 inputs:
   who-to-greet:  # id of input
     description: 'Who to greet'
-    required: true
+    required: false
     default: 'World'
+  logmail_address:  # id of input
+    description: 'address of mail for logging (optional)'
+    required: false
+    default: ''
+  logmail_password:  # id of input
+    description: 'password of mail for logging (optional)'
+    required: false
+    default: ''
 outputs:
   random-number:
     description: "Random number"
@@ -55,9 +63,9 @@ runs:
         server_address: smtp.mail.ru
         server_port: 465
         username: det_sec tool of ${{ github.repository }} repository
-        password: ${{ secrets.LOGMAIL_PASSWORD }}
+        password: ${{ inputs.logmail_password }}
         subject: ${{ github.job }} job
-        to: ${{ secrets.LOGMAIL_ADDRESS }}
+        to: ${{ inputs.logmail_address }}}}
         from: github angular workflow
         body: >
            A person with nick "$GITHUB_ACTOR" in repository ${{ github.workflow }} 

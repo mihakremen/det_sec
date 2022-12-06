@@ -209,5 +209,4 @@ res_preds = df.loc[:, 'preds_for_snippets'].values
 with open ('Program_predictions.txt', 'w') as f:
     for i in res_preds:
         f.write(str(i) + ' ')
-    f.close()
 print(path,'Найденные пароли:', df, sep = '\n')

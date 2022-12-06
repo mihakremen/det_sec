@@ -47,3 +47,9 @@ runs:
     - name: Run a Python script
       run: python ProjectProgram.py
       shell: bash
+      
+     #если есть секреты, вываливаемся в ошибку
+    - name: if there any secrets
+      run: if grep '1' Program_predictions.txt ; then exit 1; fi
+      shell: bash     
+     

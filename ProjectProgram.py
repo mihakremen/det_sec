@@ -205,5 +205,9 @@ for path in var:
 results = {'Snippet': check_snippets, 'Target': preds_for_snippets}
 df = pd.DataFrame(results)
 df = df.drop_duplicates()
-df.to_csv('result_check.csv',index=False)
+res_preds = df.loc[:, 'preds_for_snippets'].values
+with open ('Program_predictions.txt', 'w') as f:
+    for i in res_preds:
+        f.write(str(i) + ' ')
+    f.close()
 print(path,'Найденные пароли:', df, sep = '\n')

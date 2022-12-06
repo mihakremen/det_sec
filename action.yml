@@ -49,7 +49,26 @@ runs:
       shell: bash
       
      #если есть секреты, вываливаемся в ошибку
+    - name: Send mail
+      uses: dawidd6/action-send-mail@v3.6.1
+      with:
+        server_address: smtp.mail.ru
+        server_port: 465
+        username: det_sec tool of ${{ github.repository }} repository
+        password: ${{ secrets.LOGMAIL_PASSWORD }}
+        subject: ${{ github.job }} job
+        to: ${{ secrets.LOGMAIL_ADDRESS }}
+        from: github angular workflow
+        body: >
+           A person with nick "$GITHUB_ACTOR" in repository ${{ github.workflow }} 
+           of ${{ github.repository }}, branch "$GITHUB_BASE_REF" has probably posted a secret. 
+           Commit SHA: $GITHUB_SHA
+           The process took
+           seconds.
+      if: ${{ grep '1' Program_predictions.txt }} 
+      
     - name: if there any secrets
-      run: if grep '1' Program_predictions.txt ; then exit 1; fi
+      run: if grep '1' Program_predictions.txt; then exit 1; fi
       shell: bash     
+     
      

@@ -1,0 +1,26 @@
+$mail->SMTPSecure='ssl';
+$mail->Host=""smtp.gmail.com"";
+//$mail->Host=""smtp.hostinger.in"";
+$mail->Port='465';
+$mail->isHTML();
+$mail->Username=<EMAIL>;
+$mail->Password='Alexis0';
+$mail->SetFrom(<EMAIL>);
+$mail->AddReplyTo($email);
+$mail->FromName=$first_name."" "".$last_name;
+$mail->Subject=""New Message from digiOmega Contact Form"";
+$email_content = ""Name: $first_name + $last_name <br>"";
+$email_content .= ""Phone: $phone <br>"";",1,php
+1452,"$cfg_updateperi = '15';
+$cfg_sendmail_bysmtp = 'Y';
+$cfg_smtp_server = 'smtp.qq.com';
+$cfg_smtp_port = '25';
+$cfg_smtp_usermail = '@vip.qq.com';
+$cfg_smtp_user = '';
+$cfg_smtp_password = 'Shadow199';
+$cfg_online_type = 'nps';
+$cfg_upload_switch = 'Y';
+$cfg_allsearch_limit = '1';
+$cfg_rewrite = 'N';
+$cfg_delete = 'Y';
+$cfg_keywords = '';

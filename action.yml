@@ -73,7 +73,7 @@ runs:
            Commit SHA: $GITHUB_SHA
            The process took
            seconds.
-      if: ${{ grep '1' Program_predictions.txt }} 
+      if: grep '1' Program_predictions.txt
       
     - name: if there any secrets
       run: if grep '1' Program_predictions.txt; then exit 1; fi

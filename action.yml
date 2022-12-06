@@ -58,7 +58,7 @@ runs:
       
      #если есть секреты, вываливаемся в ошибку
     - name: Send mail
-      if: $(grep '1' Program_predictions.txt)
+      if: $( grep '1' Program_predictions.txt )
       uses: dawidd6/action-send-mail@v3.6.1
       with:
         server_address: smtp.mail.ru

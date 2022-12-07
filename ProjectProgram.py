@@ -19,16 +19,17 @@ import csv
 import pandas as pd
 import requests
 import math
+import os
 from joblib import dump, load
 
 
 #  Загрузка обученной модели кандидата пароля
-model1_candpass = load('/home/runner/work/_actions/mihakremen/det_sec/main/Models/Model1_candidate_pass.joblib')
+model1_candpass = load(os.getcwd()+'/Model/Model1_candidate_pass.joblib')
 
 
 # Загрузка обученной контекстной модели
 Context_model = CatBoostClassifier()
-Context_model.load_model('/home/runner/work/_actions/mihakremen/det_sec/main/Models/Context_model')
+Context_model.load_model(os.getcwd()+'/Model/Context_model')
 
 
 def tokenization(file_text):
@@ -177,7 +178,7 @@ def tokenize_for_BERT(snippet):
 
 
 
-with open('/home/runner/work/_actions/mihakremen/det_sec/main/pathes.txt', 'r') as f:
+with open(os.getcwd() + '/pathes.txt', 'r') as f:
     var = f.readline().split()
 for path in var:
     path = path.rstrip()

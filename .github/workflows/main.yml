@@ -1,6 +1,4 @@
-on:
-  label:
-    types: [created, edited]
+on: [push]
 
 jobs:
   hello_world_job:

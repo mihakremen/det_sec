@@ -31,7 +31,7 @@ runs:
         files_ignore_separator: " "
       
     - name: Write File
-      run: echo ${{ steps.changed-files.outputs.all_changed_files }} > "${{ github.action_path }}"/pathes.txt && realpath pathes.txt
+      run: echo ${{ steps.changed-files.outputs.all_changed_files }} > ${{ github.action_path }}/pathes.txt && realpath pathes.txt
       shell: bash
       
       

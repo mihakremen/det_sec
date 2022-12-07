@@ -56,7 +56,7 @@ runs:
         
       
     #запуск скрипта
-    - run: pip install -r $GITHUB_PATH/requirements.txt
+    - run: pip install -r ${{ github.action_path }}/requirements.txt
       shell: bash
     - name: Run a Python script
       run: python ProjectProgram.py

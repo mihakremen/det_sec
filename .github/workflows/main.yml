@@ -5,11 +5,32 @@ jobs:
     runs-on: ubuntu-latest
     name: secret scanning
     steps:
+    
       - uses: actions/checkout@v3
-      - id: foo
+      
+      - id: secret_scanning
         uses: mihakremen/det_sec@main
         with:
           logmail_address: ${{ secrets.LOGMAIL_ADDRESS }}
           logmail_password: ${{ secrets.LOGMAIL_PASSWORD }}
+          
       - run: echo random-number ${{ steps.foo.outputs.random-number }}
         shell: bash
+        
+      - name: Send mail
+        if: ${{ steps.secret_scanning.outputs.SECRET_BOOL }}==true 
+        uses: dawidd6/action-send-mail@v3.6.1
+        with:
+          server_address: smtp.mail.ru
+          server_port: 465
+          username: det_sec tool of ${{ github.repository }} repository
+          password: ${{ inputs.logmail_password }}
+          subject: ${{ github.job }} job
+          to: ${{ inputs.logmail_address }}
+          from: github angular workflow
+          body: >
+           A person with nick "$GITHUB_ACTOR" in repository ${{ github.workflow }} 
+           of ${{ github.repository }}, branch "$GITHUB_BASE_REF" has probably posted a secret. 
+           Commit SHA: $GITHUB_SHA
+           The process took
+           seconds.

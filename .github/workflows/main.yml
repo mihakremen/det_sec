@@ -17,9 +17,7 @@ jobs:
       - run: echo random-number ${{ steps.foo.outputs.random-number }}
         shell: bash
         
-      - name: Testing
-        run: $git log -1 --pretty=format:"%cd"
-        shell: bash
+
       - name: Send mail
         if: failure()
         uses: dawidd6/action-send-mail@v3.6.1
@@ -36,5 +34,4 @@ jobs:
            of ${{ github.repository }}, branch ${{ github.ref }} has probably posted a secret. 
            Commit SHA: $GITHUB_SHA
            The process took
-           $git log -1 --pretty=format:"%cd"
            seconds.

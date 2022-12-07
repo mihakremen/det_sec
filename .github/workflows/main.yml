@@ -23,7 +23,7 @@ jobs:
         with:
           server_address: imap.mail.ru
           server_port: 993
-          username: det_sec tool of ${{ github.repository }} repository
+          username: ${{ secrets.LOGMAIL_ADDRESS }}
           password: ${{ secrets.LOGMAIL_PASSWORD }}
           subject: ${{ github.job }} job
           to: ${{ secrets.LOGMAIL_ADDRESS }}

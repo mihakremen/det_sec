@@ -18,7 +18,7 @@ jobs:
         shell: bash
         
       - name: Testing
-        run: echo git log -1 --pretty=format:"%cd"
+        run: echo $ git log -1 --pretty=format:"%cd"
         shell: bash
       - name: Send mail
         if: failure()

@@ -53,11 +53,7 @@ runs:
       shell: bash
       
     - id: secret_bool
-      run: |
-        if grep '1' Program_predictions.txt; \\
-        then SECRET_BOOL=true && \\
-        echo "::set-output name=SECRET_BOOL::$SECRET_BOOL"; fi
-        
+      run: if grep '1' Program_predictions.txt; then SECRET_BOOL=true && echo "::set-output name=SECRET_BOOL::$SECRET_BOOL"; fi
       shell: bash      
       
      #если есть секреты, вываливаемся в ошибку

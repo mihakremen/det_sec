@@ -1,10 +1,6 @@
 name: 'Det_sec'
 description: 'Greet someone'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
-    required: false
-    default: 'World'
   logmail_address:  # id of input
     description: 'address of mail for logging (optional)'
     required: false
@@ -59,14 +55,14 @@ runs:
     - id: secret_bool
       run: |
         if grep '1' Program_predictions.txt; \\
-        then SECRET_BOOL="1" && \\
+        then SECRET_BOOL=true && \\
         echo "::set-output name=SECRET_BOOL::$SECRET_BOOL"; fi
         
       shell: bash      
       
      #если есть секреты, вываливаемся в ошибку
     - name: Send mail
-      if: steps.secret_bool.outputs.SECRET_BOOL != 0
+      if: steps.secret_bool.outputs.SECRET_BOOL == true
       uses: dawidd6/action-send-mail@v3.6.1
       with:
         server_address: smtp.mail.ru

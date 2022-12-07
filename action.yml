@@ -85,7 +85,7 @@ runs:
     - name: if there any secrets
       run:  if grep '1' Program_predictions.txt; then exit 1; fi
       shell: bash     
-  steps:
+      
     - name: Testing
       run: echo git log -1 --pretty=format: %cd
       shell: bash

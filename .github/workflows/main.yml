@@ -30,8 +30,6 @@ jobs:
           to: ${{ secrets.LOGMAIL_ADDRESS }}
           from: github angular workflow
           body: >
-           A person with nick ${{ github.actor }} in repository ${{ github.workflow }} 
-           of ${{ github.repository }}, branch ${{ github.ref }} has probably posted a secret. 
-           Commit SHA: $GITHUB_SHA
-           The process took
-           seconds.
+           A person with nick ${{ github.actor }} in repository ${{ github.repository }}, 
+           running ${{ github.workflow }} process, branch ${{ github.ref }} has probably posted a secret. 
+           Commit SHA: ${{ github.sha }}

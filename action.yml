@@ -43,17 +43,20 @@ runs:
   
   
        # Установка зависимостей pip
-    - name: Python Dependency Installation
+    - name: install python
       uses: actions/setup-python@v4
       with:
         python-version: '3.9'
+        
     - name: restore_env_cache
       uses: actions/cache@v3
       with:
         path: ${{ env.pythonLocation }}
         key: ${{ env.pythonLocation }}-${{ hashFiles('setup.py') }}-${{ hashFiles('requirements.txt') }}
+        
+      
     #запуск скрипта
-    - run: pip install -r requirements.txt
+    - run: pip install -r $GITHUB_PATH/requirements.txt
       shell: bash
     - name: Run a Python script
       run: python ProjectProgram.py

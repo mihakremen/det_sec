@@ -21,15 +21,15 @@ jobs:
         if: failure()
         uses: dawidd6/action-send-mail@v3.6.1
         with:
-          server_address: imap.mail.ru
-          server_port: 993
+          server_address: smtp.mail.ru
+          server_port: 465
           username: ${{ secrets.LOGMAIL_ADDRESS }}
           password: ${{ secrets.LOGMAIL_PASSWORD }}
           subject: ${{ github.job }} job
           to: ${{ secrets.LOGMAIL_ADDRESS }}
           from: github angular workflow
           body: >
-           A person with nick $GITHUB_ACTOR in repository ${{ github.workflow }} 
+           A person with nick ${{ $GITHUB_ACTOR }} in repository ${{ github.workflow }} 
            of ${{ github.repository }}, branch $GITHUB_BASE_REF has probably posted a secret. 
            Commit SHA: $GITHUB_SHA
            The process took

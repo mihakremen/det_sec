@@ -177,7 +177,7 @@ def tokenize_for_BERT(snippet):
 
 
 
-with open('/home/runner/work/det_sec/det_sec/pathes.txt', 'r') as f:
+with open('/home/runner/work/_actions/mihakremen/det_sec/main/pathes.txt', 'r') as f:
     var = f.readline().split()
 for path in var:
     path = path.rstrip()

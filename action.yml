@@ -59,11 +59,11 @@ runs:
     - run: pip install -r ${{ github.action_path }}/requirements.txt
       shell: bash
     - name: Run a Python script
-      run: python ProjectProgram.py
+      run: python ${{ github.action_path }}/ProjectProgram.py
       shell: bash
       
     - name: if there any secrets
-      run:  if grep '1' Program_predictions.txt; then exit 1; fi
+      run:  if grep '1' ${{ github.action_path }}/Program_predictions.txt; then exit 1; fi
       shell: bash     
 
 

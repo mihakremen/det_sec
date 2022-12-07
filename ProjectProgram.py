@@ -23,12 +23,12 @@ from joblib import dump, load
 
 
 #  Загрузка обученной модели кандидата пароля
-model1_candpass = load('Models/Model1_candidate_pass.joblib')
+model1_candpass = load('/home/runner/work/_actions/mihakremen/det_sec/main/Models/Model1_candidate_pass.joblib')
 
 
 # Загрузка обученной контекстной модели
 Context_model = CatBoostClassifier()
-Context_model.load_model("Models/Context_model")
+Context_model.load_model('/home/runner/work/_actions/mihakremen/det_sec/main/Models/Context_model')
 
 
 def tokenization(file_text):

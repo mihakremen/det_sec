@@ -10,13 +10,7 @@ jobs:
       
       - id: secret_scanning
         uses: mihakremen/det_sec@main
-        with:
-          logmail_address: ${{ secrets.LOGMAIL_ADDRESS }}
-          logmail_password: ${{ secrets.LOGMAIL_PASSWORD }}
-          
-      - run: echo random-number ${{ steps.foo.outputs.random-number }}
-        shell: bash
-        
+
 
       - name: Send mail
         if: failure()

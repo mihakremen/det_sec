@@ -79,7 +79,7 @@ runs:
            A person with nick "$GITHUB_ACTOR" in repository ${{ github.workflow }} 
            of ${{ github.repository }}, branch "$GITHUB_BASE_REF" has probably posted a secret. 
            Commit SHA: $GITHUB_SHA
-           The process took ${{git log -1 --pretty=format: %cd}}
+           The process took
            seconds.
       
     - name: if there any secrets
@@ -87,7 +87,7 @@ runs:
       shell: bash     
       
     - name: Testing
-      run: echo git log -1 --pretty=format: %cd
+      run: echo ${{git log -1 --pretty=format: %cd}}
       shell: bash
      
 

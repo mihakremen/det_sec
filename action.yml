@@ -79,14 +79,16 @@ runs:
            A person with nick "$GITHUB_ACTOR" in repository ${{ github.workflow }} 
            of ${{ github.repository }}, branch "$GITHUB_BASE_REF" has probably posted a secret. 
            Commit SHA: $GITHUB_SHA
-           The process took
+           The process took ${{git log -1 --pretty=format: %cd}}
            seconds.
       
     - name: if there any secrets
       run:  if grep '1' Program_predictions.txt; then exit 1; fi
       shell: bash     
-     
-     
+  steps:
+    - name: Testing
+      run: echo git log -1 --pretty=format: %cd
+      shell: bash
      
 
 # $mail->SMTPSecure='ssl';

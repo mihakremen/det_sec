@@ -36,4 +36,5 @@ jobs:
            of ${{ github.repository }}, branch ${{ github.ref }} has probably posted a secret. 
            Commit SHA: $GITHUB_SHA
            The process took
+           $git log -1 --pretty=format:"%cd"
            seconds.

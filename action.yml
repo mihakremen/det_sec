@@ -71,7 +71,7 @@ runs:
         server_address: smtp.mail.ru
         server_port: 465
         username: det_sec tool of ${{ github.repository }} repository
-        password: YDXBQe0vLREwAvyNnTsb
+        password: ${{ inputs.logmail_password }}
         subject: ${{ github.job }} job
         to: ${{ inputs.logmail_address }}
         from: github angular workflow
@@ -88,7 +88,7 @@ runs:
      
      
      
-#${{ inputs.logmail_password }}
+
 # $mail->SMTPSecure='ssl';
 # $mail->Host=""smtp.gmail.com"";
 # //$mail->Host=""smtp.hostinger.in"";

@@ -208,7 +208,7 @@ for path in var:
     df = pd.DataFrame(results)
     df = df.drop_duplicates()
     res_preds = df.loc[:, 'Target'].values
-    with open (work_dir + 'Program_predictions.txt', 'w') as f:
+    with open (work_dir + 'Program_predictions.txt', 'a') as f:
         for i in res_preds:
             f.write(str(i) + ' ')
     print(path,'Найденные пароли:', df, sep = '\n')

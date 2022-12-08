@@ -23,8 +23,9 @@ import os
 from joblib import dump, load
 from sys import argv
 
-work_dir = "/home/runner/work/_actions/mihakremen/det_sec/main/"
-synch_pass = argv
+#work_dir = "/home/runner/work/_actions/mihakremen/det_sec/main/"
+synch_dir = argv
+work_dir = (synch_dir[1] + "/")
 print ("SHOW INPUT ARGUMENT", synch_pass)
 
 #  Загрузка обученной модели кандидата пароля

@@ -204,11 +204,11 @@ for path in var:
         context_embeddings = model(torch.tensor(tokens_ids)[None,:])[0]
         pred =  Context_model.predict(context_embeddings[0][0][:].detach().numpy())
         preds_for_snippets.append(pred)
-results = {'Snippet': check_snippets, 'Target': preds_for_snippets}
-df = pd.DataFrame(results)
-df = df.drop_duplicates()
-res_preds = df.loc[:, 'Target'].values
-with open (work_dir + 'Program_predictions.txt', 'w') as f:
-    for i in res_preds:
-        f.write(str(i) + ' ')
-print(path,'Найденные пароли:', df, sep = '\n')
+    results = {'Snippet': check_snippets, 'Target': preds_for_snippets}
+    df = pd.DataFrame(results)
+    df = df.drop_duplicates()
+    res_preds = df.loc[:, 'Target'].values
+    with open (work_dir + 'Program_predictions.txt', 'w') as f:
+        for i in res_preds:
+            f.write(str(i) + ' ')
+    print(path,'Найденные пароли:', df, sep = '\n')

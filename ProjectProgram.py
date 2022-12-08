@@ -26,7 +26,7 @@ from sys import argv
 #work_dir = "/home/runner/work/_actions/mihakremen/det_sec/main/"
 synch_dir = argv
 work_dir = (synch_dir[1] + "/")
-print ("SHOW INPUT ARGUMENT", synch_pass)
+print ("SHOW INPUT ARGUMENT", synch_dir)
 
 #  Загрузка обученной модели кандидата пароля
 model1_candpass = load(work_dir+'Models/Model1_candidate_pass.joblib')

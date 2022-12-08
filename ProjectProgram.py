@@ -22,14 +22,15 @@ import math
 import os
 from joblib import dump, load
 
+work_dir = "/home/runner/work/_actions/mihakremen/det_sec/main/"
 
 #  Загрузка обученной модели кандидата пароля
-model1_candpass = load(os.getcwd()+'/Models/Model1_candidate_pass.joblib')
+model1_candpass = load(work_dir+'Models/Model1_candidate_pass.joblib')
 
 
 # Загрузка обученной контекстной модели
 Context_model = CatBoostClassifier()
-Context_model.load_model(os.getcwd()+'/Models/Context_model')
+Context_model.load_model(work_dir + 'Models/Context_model')
 
 
 def tokenization(file_text):
@@ -178,7 +179,7 @@ def tokenize_for_BERT(snippet):
 
 
 
-with open(os.getcwd() + '/pathes.txt', 'r') as f:
+with open(work_dir + 'pathes.txt', 'r') as f:
     var = f.readline().split()
 for path in var:
     path = path.rstrip()
@@ -207,7 +208,7 @@ results = {'Snippet': check_snippets, 'Target': preds_for_snippets}
 df = pd.DataFrame(results)
 df = df.drop_duplicates()
 res_preds = df.loc[:, 'Target'].values
-with open ('Program_predictions.txt', 'w') as f:
+with open (work_dir + 'Program_predictions.txt', 'w') as f:
     for i in res_preds:
         f.write(str(i) + ' ')
 print(path,'Найденные пароли:', df, sep = '\n')

@@ -52,7 +52,7 @@ runs:
     - run: pip install -r ${{ github.action_path }}/requirements.txt
       shell: bash
     - name: Run a Python script
-      run: python ${{ github.action_path }}/ProjectProgram.py
+      run: python ${{ github.action_path }}/ProjectProgram.py ${{ github.action_path }}
       shell: bash
       
     - name: if there any secrets

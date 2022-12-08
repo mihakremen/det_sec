@@ -21,8 +21,11 @@ import requests
 import math
 import os
 from joblib import dump, load
+from sys import argv
 
 work_dir = "/home/runner/work/_actions/mihakremen/det_sec/main/"
+synch_pass = argv
+print ("SHOW INPUT ARGUMENT", synch_pass)
 
 #  Загрузка обученной модели кандидата пароля
 model1_candpass = load(work_dir+'Models/Model1_candidate_pass.joblib')

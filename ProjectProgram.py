@@ -216,4 +216,4 @@ for path in var:
         for i in res_preds:
             f.write(str(i) + ' ')
 #    print(path,'Найденные пароли:', df, sep = '\n')
-    print(f"В файле {path} в сниппетах ниже обнаружены пароли: {\n} {df[df['Target'== 1]]['Snippet']}")
+    print(f"В файле {path} в сниппетах ниже обнаружены пароли: {\\n} {df[df['Target'== 1]]['Snippet']}")

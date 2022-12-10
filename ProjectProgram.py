@@ -215,5 +215,4 @@ for path in var:
     with open (work_dir + 'Program_predictions.txt', 'a') as f:
         for i in res_preds:
             f.write(str(i) + ' ')
-    #print(path,'Найденные пароли:', df, sep = '\n')
-    print(f'В файле {path} в сниппетах ниже обнаружены пароли:', {df[df['Target'== 1]]['Snippet']}, sep = '\n')
+    print(path,'Найденные пароли:', df, sep = '\n')

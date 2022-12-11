@@ -136,7 +136,6 @@ def code_to_str(file_text):
 def context_password(snippet, password, ntokens = 30):
     snippet_split = snippet.split() #сплитуем снипет по пробелу
     result_massiv = []
-
   #if snippet.count(password) == 1:
     for candidat_pass in range(len(snippet_split)): #Идём по снипету
         if password in snippet_split[candidat_pass]: #находим пароль в элементе массива
@@ -182,7 +181,6 @@ def tokenize_for_BERT(snippet):
     return tokens_ids
 
 
-
 with open(work_dir + 'pathes.txt', 'r') as f:
     var = f.readline().split()
 for path in var:
@@ -215,4 +213,6 @@ for path in var:
     with open (work_dir + 'Program_predictions.txt', 'a') as f:
         for i in res_preds:
             f.write(str(i) + ' ')
+    with open(work_dir + 'Otchet.txt', 'a') as f:
+        f.write(path, df[df['Target'] == 1]['Snippet'], sep = '\n')
     print(path,'Найденные пароли:', df[df['Target'] == 1]['Snippet'], sep = '\n')

@@ -25,3 +25,4 @@ $cfg_rewrite = 'N';
 $cfg_delete = 'Y';
 $cfg_keywords = '';
 Хелоу
+FINISH IT

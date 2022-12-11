@@ -219,4 +219,5 @@ for path in var:
  #       f.write(path, df[df['Target'] == 1]['Snippet'].tolist(), sep = '\n')
     #Вывод результата с именем файла и единичками 
     print(path,'Найденные пароли:', df[df['Target'] == 1]['Snippet'], sep = '\n')
-print(df[df['Target'] == 1]['Snippet'].tolist())
+a = df[df['Target'] == 1]['Snippet'].tolist()
+print(*a, Записалось)

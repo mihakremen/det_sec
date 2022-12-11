@@ -213,6 +213,6 @@ for path in var:
     with open (work_dir + 'Program_predictions.txt', 'a') as f:
         for i in res_preds:
             f.write(str(i) + ' ')
-    with open(work_dir + 'otchet.txt', 'a') as f:
-        f.write(path, [str(i) for i in df[df['Target'] == 1]['Snippet']], sep = '\n')
+    with open(work_dir + 'otchet.csv', 'a') as f:
+        f.write(path, df[df['Target'] == 1]['Snippet'], sep = '\n')
     print(path,'Найденные пароли:', df[df['Target'] == 1]['Snippet'], sep = '\n')

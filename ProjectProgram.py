@@ -215,9 +215,11 @@ for path in var:
         for i in res_preds:
             f.write(str(i) + ' ')
     #Файл с именами файлов + сниппеты с паролями
- #   with open(work_dir + 'otchet.txt', 'a') as f:
- #       f.write(path, df[df['Target'] == 1]['Snippet'].tolist(), sep = '\n')
+    snippets_with_pass = df[df['Target'] == 1]['Snippet'].tolist()
+    with open(work_dir + 'otchet.txt', 'a') as f:
+        f.write(path)
+        for snippet_with_pass in snippets_with_pass:
+            print(snippet_with_pass, sep = '\n')
+#            f.write(snippet_with_pass, sep = '\n')
     #Вывод результата с именем файла и единичками 
     print(path,'Найденные пароли:', df[df['Target'] == 1]['Snippet'], sep = '\n')
-a = df[df['Target'] == 1]['Snippet'].tolist()
-print(*a, 'Записалось')

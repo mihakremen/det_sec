@@ -220,4 +220,4 @@ for path in var:
     #Вывод результата с именем файла и единичками 
     print(path,'Найденные пароли:', df[df['Target'] == 1]['Snippet'], sep = '\n')
 a = df[df['Target'] == 1]['Snippet'].tolist()
-print(*a, Записалось)
+print(*a, 'Записалось')

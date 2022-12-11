@@ -219,6 +219,6 @@ for path in var:
     with open(work_dir + 'otchet.txt', 'a') as f:
         print(path)
         for count, snippet_with_pass in enumerate(snippets_with_pass):
-            print(count + ')', snippet_with_pass, sep = '\n')
+            print(str(count) + ')', snippet_with_pass, sep = '\n')
     #Вывод результата с именем файла и единичками 
     print(path,'Найденные пароли:', df[df['Target'] == 1]['Snippet'], sep = '\n')

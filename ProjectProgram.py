@@ -220,7 +220,7 @@ for path in var:
     #Файл с именами файлов + сниппеты с паролями
     snippets_with_pass = df[df['Target'] == 1]['Snippet'].tolist()
     with open(work_dir + 'otchet.txt', 'a') as f:
-        f.write('Файл' + path + '\n')
+        f.write('Файл ' + path + '\n')
         f.write('Сниппеты:' + '\n')
         for count, snippet_with_pass in enumerate(snippets_with_pass):
             f.write(str(count) + ') ' + str(snippet_with_pass) + '\n')

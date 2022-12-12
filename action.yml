@@ -5,9 +5,9 @@ outputs:
   random-number:
     description: "Random number"
     value: ${{ steps.random-number-generator.outputs.random-number }}
-  secret_bool:
-    description: "boolean is true if secrets were detected"
-    value: ${{ steps.secret_bool.outputs.SECRET_BOOL }}
+  found-secrets:
+    description: "list of files and snippets with detected secrets"
+    value: ${{ steps.list-found-secrest.outputs.found-secrets }}
   
 runs:
   using: "composite"
@@ -53,6 +53,10 @@ runs:
       shell: bash
     - name: Run a Python script
       run: python ${{ github.action_path }}/ProjectProgram.py ${{ github.action_path }}
+      shell: bash
+    
+    - id: list-found-secrets
+      run: cat ${{ github.action_path }}/otchet.txt >> $GITHUB_OUTPUT
       shell: bash
       
     - name: if there any secrets

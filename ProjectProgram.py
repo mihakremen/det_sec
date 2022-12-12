@@ -211,8 +211,8 @@ for path in var:
     for snippet in check_snippets:
         tokens_ids = tokenize_for_BERT(snippet)
         context_embeddings = model(torch.tensor(tokens_ids)[None,:])[0]
-        pred =  Context_model.predict(context_embeddings[0][0][:].detach().numpy())
-        preds_for_snippets.append(pred)
+        pred =  Context_model.predict([context_embeddings[0][0][:].detach().numpy()])
+        preds_for_snippets.append(pred[0])
     results = {'Snippet': check_snippets, 'Target': preds_for_snippets}
     df = pd.DataFrame(results)
     res_preds = df.loc[:, 'Target'].values

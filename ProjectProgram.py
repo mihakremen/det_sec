@@ -17,11 +17,6 @@ import nltk.data
 nltk.download('punkt')
 import string
 import re
-import csv
-import pandas as pd
-import requests
-import math
-import os
 from joblib import dump, load
 from sys import argv
 

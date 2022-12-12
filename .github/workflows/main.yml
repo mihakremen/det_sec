@@ -12,6 +12,7 @@ jobs:
         uses: mihakremen/det_sec@main
 
       - name: list-found-secrets
+        if: failure()
         run: echo ${{ steps.secret_scanning.outputs.found-secrets }}
 
       - name: Send mail

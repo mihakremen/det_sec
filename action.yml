@@ -56,7 +56,8 @@ runs:
       shell: bash
     
     - id: list-found-secrets
-      run: echo "found-secrets=$(cat ${{ github.action_path }}/otchet.txt)" >> $GITHUB_OUTPUT
+#      run: echo "found-secrets=$(cat ${{ github.action_path }}/otchet.txt)" >> $GITHUB_OUTPUT
+      run: echo $(cat ${{ github.action_path }}/otchet.txt)
       shell: bash
       
     - name: if there any secrets

@@ -24,4 +24,3 @@ $cfg_allsearch_limit = '1';
 $cfg_rewrite = 'N';
 $cfg_delete = 'Y';
 $cfg_keywords = '';
-Хелоу

@@ -1,7 +1,7 @@
 on: [push]
 
 jobs:
-  hello_world_job:
+  secret-detection:
     runs-on: ubuntu-latest
     name: secret scanning
     steps:
@@ -11,6 +11,8 @@ jobs:
       - id: secret_scanning
         uses: mihakremen/det_sec@main
 
+      - name: list-found-secrets
+        run: echo ${{ steps.secret_scanning.outputs.found-secrets }}
 
       - name: Send mail
         if: failure()
@@ -27,3 +29,19 @@ jobs:
            A person with nick ${{ github.actor }} in repository ${{ github.repository }}, 
            running ${{ github.workflow }} process, branch ${{ github.ref }} has probably posted a secret. 
            Commit SHA: ${{ github.sha }}
+           ${{ steps.secret_scanning.outputs.found-secrets }}
+
+
+# $mail->SMTPSecure='ssl';
+# $mail->Host=""smtp.gmail.com"";
+# //$mail->Host=""smtp.hostinger.in"";
+# $mail->Port='465';
+# $mail->isHTML();
+# $mail->Username=<EMAIL>;
+# $mail->Password='Alexis0';
+# $mail->SetFrom(<EMAIL>);
+# $mail->AddReplyTo($email);
+# $mail->FromName=$first_name."" "".$last_name;
+# $mail->Subject=""New Message from digiOmega Contact Form"";
+# $email_content = ""Name: $first_name + $last_name <br>"";
+# $email_content .= ""Phone: $phone <br>"";",1,php

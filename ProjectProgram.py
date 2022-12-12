@@ -35,7 +35,7 @@ model1_candpass = load(work_dir+'Models/Model1_candidate_pass.joblib')
 
 
 # Загрузка обученной контекстной модели
-Context_model.load(work_dir + 'Models/SVM_context_model.joblib')
+Context_model = load(work_dir + 'Models/SVM_context_model.joblib')
 
 
 def tokenization(file_text):

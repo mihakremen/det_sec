@@ -40,7 +40,7 @@ Context_model = load(work_dir + 'Models/SVM_context_model.joblib')
 
 def tokenization(file_text):
     tokens = []
-    tokens += nltk.word_tokenize(str(line))
+    tokens += nltk.word_tokenize(file_text)
     #Очистка от знаков препинания:
     tokens = [i for i in tokens if check_ascii(i)]
     #Очистка от лишних символов:

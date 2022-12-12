@@ -3,8 +3,8 @@ import pandas as pd
 import numpy as np
 from transformers import AutoTokenizer, AutoModel
 import torch
-tokenizer = AutoTokenizer.from_pretrained("microsoft/codebert-base")
-model = AutoModel.from_pretrained("microsoft/codebert-base")
+tokenizer = AutoTokenizer.from_pretrained("microsoft/unixcoder-base")
+model = AutoModel.from_pretrained("microsoft/unixcoder-base")
 from itertools import groupby
 import csv
 from sklearn.linear_model import LogisticRegression

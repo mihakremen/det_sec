@@ -223,6 +223,6 @@ for path in var:
         f.write('Файл' + path)
         f.write('Сниппеты:')
         for count, snippet_with_pass in enumerate(snippets_with_pass):
-            f.write(str(count) + ')', snippet_with_pass, end = '\n')
+            f.write(str(count) + ')', str(snippet_with_pass), end = '\n')
     #Вывод результата с именем файла и единичками 
     print(path,'Найденные пароли:', df[df['Target'] == 1]['Snippet'], sep = '\n')

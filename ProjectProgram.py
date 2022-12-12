@@ -8,7 +8,9 @@ model = AutoModel.from_pretrained("microsoft/codebert-base")
 from itertools import groupby
 import csv
 from sklearn.linear_model import LogisticRegression
-from catboost import CatBoostClassifier
+from sklearn.pipeline import make_pipeline
+from sklearn.preprocessing import StandardScaler
+from sklearn.svm import SVC
 from transformers import RobertaTokenizer, RobertaConfig, RobertaModel
 import nltk
 import nltk.data
@@ -33,16 +35,12 @@ model1_candpass = load(work_dir+'Models/Model1_candidate_pass.joblib')
 
 
 # Загрузка обученной контекстной модели
-Context_model = CatBoostClassifier()
-Context_model.load_model(work_dir + 'Models/Context_model')
+Context_model.load(work_dir + 'Models/SVM_context_model.joblib')
 
 
 def tokenization(file_text):
     tokens = []
-    with open(file_text, encoding='utf8') as f:
-        #разбивка на токены:
-        for line in f:
-            tokens += nltk.word_tokenize(str(line))
+    tokens += nltk.word_tokenize(str(line))
     #Очистка от знаков препинания:
     tokens = [i for i in tokens if check_ascii(i)]
     #Очистка от лишних символов:
@@ -180,18 +178,27 @@ def tokenize_for_BERT(snippet):
     tokens_ids = tokenizer.convert_tokens_to_ids(tokens)
     return tokens_ids
 
+# удаление дубликатов в массиве
+def drop_duplicates(list):
+    n = []
+    for i in list:
+        if i not in n:
+            n.append(i)
+    return n
+
 
 with open(work_dir + 'pathes.txt', 'r') as f:
     var = f.readline().split()
 for path in var:
     path = path.rstrip()
     # Работа первой модели
-    input = tokens_prepare_ML1(tokenization(path))
+    input = input = tokens_prepare_ML1(tokenization(code_to_str(path)))
     X_for_Model1 = input.drop('Input', axis = 1).values
     model1_candpass.predict(X_for_Model1)
-    new_preds = custom_predict(X=X_for_Model1, threshold=0.5)
+    new_preds = custom_predict(X=X_for_Model1, threshold=0.4)
     input2 = input['Input'].values
     passwords_mas = [input2[i] for i in range(len(new_preds)) if new_preds[i] == 1]
+    
     # Работа второй модели
     check_file = code_to_str(path)
     check_snippets = []
@@ -200,7 +207,7 @@ for path in var:
         snippets  = context_password(check_file, cand_pass)
         for i in snippets:
             check_snippets.append(i)
-    check_snippets = [el for el, _ in groupby(check_snippets)]  # Удаление дубликатов
+    check_snippets = drop_duplicates(check_snippets)  # Удаление дубликатов
     for snippet in check_snippets:
         tokens_ids = tokenize_for_BERT(snippet)
         context_embeddings = model(torch.tensor(tokens_ids)[None,:])[0]
@@ -208,8 +215,8 @@ for path in var:
         preds_for_snippets.append(pred)
     results = {'Snippet': check_snippets, 'Target': preds_for_snippets}
     df = pd.DataFrame(results)
-    df = df.drop_duplicates()
     res_preds = df.loc[:, 'Target'].values
+    
     #Файл с результатами, для отработки ошибки при единичке и отправьке письма
     with open (work_dir + 'Program_predictions.txt', 'a') as f:
         for i in res_preds:

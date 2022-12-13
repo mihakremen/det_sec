@@ -65,7 +65,7 @@ runs:
       
       
     - name: show-variable-output
-      run: echo -e ${{ steps.list-found-secrest.outputs.found-secrets }}
+      run: echo -e ${{ steps.list-found-secrets.outputs.found-secrets }}
       shell: bash
       
     - name: if there any secrets

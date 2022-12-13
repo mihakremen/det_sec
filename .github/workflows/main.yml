@@ -32,7 +32,7 @@ jobs:
           to: ${{ secrets.LOGMAIL_ADDRESS }}
           from: github angular workflow
           body: >
-           Attention! ${{ github.workflow }} process was failed. \n
+           Attention! ${{ github.workflow }} process was failed. $'/n'
            A person with nick ${{ github.actor }} in repository ${{ github.repository }}, 
             , branch ${{ github.ref }} has probably posted a secret. 
            Commit SHA: ${{ github.sha }}

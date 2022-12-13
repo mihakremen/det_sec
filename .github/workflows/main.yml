@@ -30,7 +30,7 @@ jobs:
           password: ${{ secrets.LOGMAIL_PASSWORD }}
           subject: ${{ github.job }} job
           to: ${{ secrets.LOGMAIL_ADDRESS }}
-          from: github angular workflow
+          from: det_sec tool
           body: |
            Attention! ${{ github.workflow }} process was failed.
            A person with nickname ${{ github.actor }} in repository ${{ github.repository }} has probably posted a secret.

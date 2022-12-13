@@ -7,8 +7,11 @@ outputs:
     value: ${{ steps.random-number-generator.outputs.random-number }}
   found-secrets:
     description: "list of files and snippets with detected secrets"
-    value: ${{ steps.list-found-secrest.outputs.found-secrets }}
-  
+    value: ${{ env.found-secrets }}
+
+env:
+  found-secrets: ''
+
 runs:
   using: "composite"
   
@@ -58,14 +61,15 @@ runs:
     - id: list-found-secrets
       run: |
         cat ${{ github.action_path }}/otchet.txt
-        echo "found-secrets:<<EOF" >> $GITHUB_OUTPUT
-        cat ${{ github.action_path }}/otchet.txt >> $GITHUB_OUTPUT
-        echo 'EOF' >> $GITHUB_OUTPUT
+        echo "found-secrets:<<EOF" >> $GITHUB_ENV
+        cat ${{ github.action_path }}/otchet.txt >> $GITHUB_ENV
+        echo 'EOF' >> $GITHUB_ENV
       shell: bash
       
       
     - name: show-variable-output
-      run: echo -e ${{ steps.list-found-secrets.outputs.found-secrets }}
+ #     run: echo -e ${{ steps.list-found-secrets.outputs.found-secrets }}
+      run: echo -e ${{ env.found-secrets }}
       shell: bash
       
     - name: if there any secrets

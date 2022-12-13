@@ -35,7 +35,7 @@ jobs:
            A person with nick ${{ github.actor }} in repository ${{ github.repository }}, 
            running ${{ github.workflow }} process, branch ${{ github.ref }} has probably posted a secret. 
            Commit SHA: ${{ github.sha }}
-           Main content: ${{ env.found-secrets: }}
+           Main content: ${{ env.found-secrets }}
 
 
 # $mail->SMTPSecure='ssl';

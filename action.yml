@@ -67,10 +67,10 @@ runs:
       shell: bash
       
       
-    - name: show-variable-output
+#    - name: show-variable-output
  #     run: echo -e ${{ steps.list-found-secrets.outputs.found-secrets }}
-      run: echo -e ${{ env.found-secrets }}
-      shell: bash
+#      run: echo -e ${{ env.found-secrets }}
+#      shell: bash
       
     - name: if there any secrets
       run:  if grep '1' ${{ github.action_path }}/Program_predictions.txt; then exit 1; fi

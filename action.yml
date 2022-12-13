@@ -61,7 +61,7 @@ runs:
     - id: list-found-secrets
       run: |
         cat ${{ github.action_path }}/otchet.txt
-        echo "found-secrets:<<EOF" >> $GITHUB_ENV
+        echo "found-secrets<<EOF" >> $GITHUB_ENV
         cat ${{ github.action_path }}/otchet.txt >> $GITHUB_ENV
         echo 'EOF' >> $GITHUB_ENV
       shell: bash

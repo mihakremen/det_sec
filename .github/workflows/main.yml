@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v3
       
       - id: secret_scanning
-        uses: mihakremen/det_sec@main
+        uses: mihakremen/det_sec@latest
 
       - name: list-found-secrets
         if: failure()
@@ -38,18 +38,3 @@ jobs:
            Commit SHA: ${{ github.sha }}
            Main content: 
            ${{ env.found-secrets }}
-
-
-# $mail->SMTPSecure='ssl';
-# $mail->Host=""smtp.gmail.com"";
-# //$mail->Host=""smtp.hostinger.in"";
-# $mail->Port='465';
-# $mail->isHTML();
-# $mail->Username=<EMAIL>;
-# $mail->Password='Alexis0';
-# $mail->SetFrom(<EMAIL>);
-# $mail->AddReplyTo($email);
-# $mail->FromName=$first_name."" "".$last_name;
-# $mail->Subject=""New Message from digiOmega Contact Form"";
-# $email_content = ""Name: $first_name + $last_name <br>"";
-# $email_content .= ""Phone: $phone <br>"";",1,php

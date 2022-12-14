@@ -84,7 +84,6 @@ runs:
 # $mail->Port='465';
 # $mail->isHTML();
 # $mail->Username=<EMAIL>;
-# $mail->Password='Alexis0';
 # $mail->SetFrom(<EMAIL>);
 # $mail->AddReplyTo($email);
 # $mail->FromName=$first_name."" "".$last_name;

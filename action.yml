@@ -41,8 +41,9 @@ runs:
  
     - id: ip_address_server
       run: |
-        cd ${{ github.action_path }} && wget -o ~/wget.txt detsec.ddns.net
-        cd ${{ github.action_path }} && echo "IP_ADDR=$(grep "Location" ~/wget.txt | awk -F/ '{print $3}' | awk -F: '{print $1}')" >> $GITHUB_ENV
+        cd ${{ github.action_path }} && wget -o wget.txt detsec.ddns.net
+        cd ${{ github.action_path }} && cat wget.txt
+        cd ${{ github.action_path }} && echo "IP_ADDR=$(grep "Location" wget.txt | awk -F/ '{print $3}' | awk -F: '{print $1}')" >> $GITHUB_ENV
       shell: bash
 
     

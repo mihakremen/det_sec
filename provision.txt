@@ -1,0 +1,60 @@
+#! /bin/bash
+
+sudo touch home/git && cd /home/git
+
+### umask
+
+sudo apt update && sudo apt udgrade -y
+sudo apt install python3-pip python3.10-venv unzip -y 
+#mkdir python-virtual-environments && cd python-virtual-environments
+python3 -m venv env
+
+### noip dynamic ip
+
+cd /usr/local/src
+sudo curl -O https://www.noip.com/client/linux/noip-duc-linux.tar.gz
+sudo tar xzf noip-duc-linux.tar.gz
+sudo rm noip-duc-linux.tar.gz
+cd noip*
+sudo make
+/usr/local/bin/noip2 -C <<EOF
+mihakremen@gmail.com
+vegatopchik1489
+5
+N
+EOF
+sudo /usr/local/bin/noip2
+
+# cron
+
+su - <<EOF
+echo '@reboot         root    /usr/local/bin/noip2' >> /etc/crontab
+echo '@reboot         root    wget -qO- eth0.me > /tmp/myipnow.txt' >> /etc/crontab
+echo '@0  0  *  * sun root    /vsr/local/bin/backup.sh' >> /etc/crontab
+EOF
+
+
+# loki + promtail
+touch /home/git/loki_promtail && cd /home/git/loki_promtail
+curl -O -L "https://github.com/grafana/loki/releases/download/v2.7.1/loki-linux-amd64.zip"
+unzip "loki-linux-amd64.zip"
+chmod a+x "loki-linux-amd64"
+curl -O -L "https://github.com/grafana/loki/releases/download/v2.7.1/promtail-linux-amd64.zip"
+unzip "promtail-linux-amd64.zip"
+chmod a+x "promtail-linux-amd64"
+./loki-linux-amd64 -config.file=loki-config.yaml &
+./promtail-linux-amd64 -config.file=promtail-config.yaml &
+
+
+#pip install virtualenv
+source /home/git/vienv/env/bin/activate 
+pip install -r /home/git/project_secret/requirements.txt 
+python /home/git/det_sec_API/fastapi_app.py &
+streamlit run /home/git/det_sec_API/web_app.py &
+
+
+
+### Основные моменты, которые надо доработать:
+Путь к файлу со списком файлов на проверку
+путь сохраняемых файлов otchet.txt
+

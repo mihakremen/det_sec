@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v3
       
       - id: secret_scanning
-        uses: mihakremen/det_sec@v1.2
+        uses: mihakremen/det_sec@reverse_models
 
       - name: list-found-secrets
         if: failure()

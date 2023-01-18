@@ -36,27 +36,16 @@ runs:
     - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
       shell: bash
   
-  
-       # Установка зависимостей pip
-    - name: install python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.9'
-        
-    - name: restore_env_cache
-      uses: actions/cache@v3
-      with:
-        path: ${{ env.pythonLocation }}
-        key: ${{ env.pythonLocation }}-${{ hashFiles('setup.py') }}-${{ hashFiles('requirements.txt') }}
-        
-      
-    #запуск скрипта
-#    - run: pip install -r requirements.txt
-    - run: pip install -r ${{ github.action_path }}/requirements.txt
-      shell: bash
-    - name: Run a Python script
-      run: python ${{ github.action_path }}/ProjectProgram.py ${{ github.action_path }}
-      shell: bash
+    # получение ip-адреса
+    -run: wget -o ~/wget.txt detsec.ddns.net
+     shell: bash
+ 
+    -id: ip_address_server
+     run: |
+        wget -o ~/wget.txt detsec.ddns.net
+        echo "IP_ADDR=$(grep "Location" ~/wget.txt | awk -F/ '{print $3}' | awk -F: '{print $1}')" >> $GITHUB_ENV
+     
+
     
     - id: list-found-secrets
       run: |

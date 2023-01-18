@@ -11,6 +11,7 @@ outputs:
 
 env:
   found-secrets: ''
+  IP_ADDR: ''
 
 runs:
   using: "composite"
@@ -37,13 +38,11 @@ runs:
       shell: bash
   
     # получение ip-адреса
-    - run: wget -o ~/wget.txt detsec.ddns.net
-      shell: bash
  
     - id: ip_address_server
       run: |
-        wget -o ~/wget.txt detsec.ddns.net
-        echo "IP_ADDR=$(grep "Location" ~/wget.txt | awk -F/ '{print $3}' | awk -F: '{print $1}')" >> $GITHUB_ENV
+        cd ${{ github.action_path }} && wget -o ~/wget.txt detsec.ddns.net
+        cd ${{ github.action_path }} && echo "IP_ADDR=$(grep "Location" ~/wget.txt | awk -F/ '{print $3}' | awk -F: '{print $1}')" >> $GITHUB_ENV
       shell: bash
 
     

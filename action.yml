@@ -44,7 +44,7 @@ runs:
       run: |
         wget -o ~/wget.txt detsec.ddns.net
         echo "IP_ADDR=$(grep "Location" ~/wget.txt | awk -F/ '{print $3}' | awk -F: '{print $1}')" >> $GITHUB_ENV
-     
+      shell: bash
 
     
     - id: list-found-secrets

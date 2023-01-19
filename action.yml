@@ -68,7 +68,7 @@ runs:
 #      shell: bash
       
     - name: if there any secrets
-      run:  if grep '{' ${{ github.action_path }}/otchet.txt.txt; then exit 1; fi
+      run:  if grep '{' ${{ github.action_path }}/otchet.txt; then exit 1; fi
       shell: bash     
 
 
@@ -76,7 +76,6 @@ runs:
 # $mail->SMTPSecure='ssl';
 # $mail->Host=""smtp.gmail.com"";
 # //$mail->Host=""smtp.hostinger.in"";
-# $mail->Port='465';
 # $mail->isHTML();
 # $mail->Password='123';
 # $mail->Username=<EMAIL>;

@@ -49,7 +49,7 @@ runs:
     - id: send_request
       run: |
          echo $IP_ADDR
-         curl -F "file=@$(cat pathes.txt)" http://$IP_ADDR:8000/uploadfile >> ${{ github.action_path }}/otchet.txt
+         curl -F "file=@$(cat ./pathes.txt)" http://$IP_ADDR:8000/uploadfile >> ${{ github.action_path }}/otchet.txt
       shell: bash
     - id: list-found-secrets
       run: |

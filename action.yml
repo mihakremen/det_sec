@@ -57,7 +57,7 @@ runs:
       run: |
          cat ${{ github.action_path }}/otchet.txt
          echo "found-secrets<<EOF" >> $GITHUB_ENV
-         cat ${{ github.action_path }}/otchet.txt >> $GITHUB_ENV
+         echo -e $(cat ${{ github.action_path }}/otchet.txt) >> $GITHUB_ENV
          echo 'EOF' >> $GITHUB_ENV
       shell: bash
       

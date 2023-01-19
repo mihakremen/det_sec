@@ -27,7 +27,7 @@ runs:
         files_ignore_separator: " "
       
     - name: Write File
-      run: cd ${{ github.action_path }} && echo ${{ steps.changed-files.outputs.all_changed_files }} > ${{ github.action_path }}/pathes.txt && realpath pathes.txt
+      run: cd ${{ github.action_path }} && echo ${{ steps.changed-files.outputs.all_changed_files }} > ${{ github.action_path }}/pathes.txt && cat pathes.txt
       shell: bash
       
       
@@ -50,7 +50,7 @@ runs:
     - id: send_request
       run: |
          echo $IP_ADDR
-         curl -F 'file=@/home/mickey/test_secrets.txt' http://$IP_ADDR:8000/uploadfile >> ${{ github.action_path }}/otchet.txt
+         curl -F "file=@$(cat pathes.txt)" http://$IP_ADDR:8000/uploadfile >> ${{ github.action_path }}/otchet.txt
       shell: bash
     - id: list-found-secrets
       run: |

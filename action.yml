@@ -10,8 +10,9 @@ outputs:
     value: ${{ env.found-secrets }}
 
 env:
-  found-secrets: ''
   IP_ADDR: ''
+  found-secrets: ''
+  
 
 runs:
   using: "composite"
@@ -54,10 +55,10 @@ runs:
       
     - id: list-found-secrets
       run: |
-        cat ${{ github.action_path }}/otchet.txt
-        echo "found-secrets<<EOF" >> $GITHUB_ENV
-        cat ${{ github.action_path }}/otchet.txt >> $GITHUB_ENV
-        echo 'EOF' >> $GITHUB_ENV
+#        cat ${{ github.action_path }}/otchet.txt
+         echo "found-secrets<<EOF" >> $GITHUB_ENV
+         cat ${{ github.action_path }}/otchet.txt >> $GITHUB_ENV
+         echo 'EOF' >> $GITHUB_ENV
       shell: bash
       
       

@@ -68,7 +68,7 @@ runs:
 #      shell: bash
       
     - name: if there any secrets
-      run:  if grep '{' ${{ github.action_path }}/otchet.txt; then exit 1; fi
+      run:  if grep -v 'Пароли не найдены' ${{ github.action_path }}/otchet.txt; then exit 1; fi
       shell: bash     
 
 

@@ -48,9 +48,10 @@ runs:
     # send request
     - id: send_request
       run: |
-         echo $IP_ADDR
          curl -F "file=@${{ steps.changed-files.outputs.all_changed_files }}" http://$IP_ADDR:8000/uploadfile >> ${{ github.action_path }}/otchet.txt
       shell: bash
+      
+      
     - id: list-found-secrets
       run: |
         cat ${{ github.action_path }}/otchet.txt
@@ -66,7 +67,7 @@ runs:
 #      shell: bash
       
     - name: if there any secrets
-      run:  if grep '1' ${{ github.action_path }}/Program_predictions.txt; then exit 1; fi
+      run:  if grep '{' ${{ github.action_path }}/otchet.txt.txt; then exit 1; fi
       shell: bash     
 
 
@@ -76,6 +77,7 @@ runs:
 # //$mail->Host=""smtp.hostinger.in"";
 # $mail->Port='465';
 # $mail->isHTML();
+# $mail->Password='123';
 # $mail->Username=<EMAIL>;
 # $mail->SetFrom(<EMAIL>);
 # $mail->AddReplyTo($email);
